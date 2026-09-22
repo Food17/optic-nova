@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{--forest:#267512;--green:#2cb609;--lime:#31f600;--ink:#080b08;--muted:#687068;font-family:Inter,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink)}a{color:inherit;text-decoration:none}
+.nav{position:fixed;z-index:5;top:18px;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 32px));display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border:1px solid #0001;border-radius:999px;background:#fffc;backdrop-filter:blur(18px)}
+.nav strong{font:700 14px "Space Grotesk"}.nav strong i{font:400 15px "Instrument Serif";margin-left:4px}.nav a,.cta{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--ink);color:#fff;padding:13px 17px;font-size:12px;font-weight:700}
+.hero{min-height:100vh;padding:180px max(32px,6vw) 100px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 75% 35%,#31f60022,transparent 25%),linear-gradient(#fff,#f7faf6)}
+.eyebrow{font-size:10px;letter-spacing:.16em;font-weight:700;color:var(--forest)}h1,h2{font-family:"Space Grotesk";letter-spacing:-.07em;line-height:.92}h1{font-size:clamp(4rem,8vw,8rem);max-width:1050px;margin:22px 0}h1 span{color:var(--green)}em{font-family:"Instrument Serif";font-weight:400}.lead{max-width:560px;color:var(--muted);line-height:1.7}
+.hero .cta{width:max-content;margin-top:25px;background:var(--green);color:#071006}.services{padding:130px max(32px,6vw);background:var(--forest);color:#fff}.services h2{font-size:clamp(3rem,6vw,6rem);max-width:900px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:70px;border:1px solid #fff2}.cards article{min-height:190px;padding:25px;border-right:1px solid #fff2;font:500 20px "Space Grotesk"}
+.contact{padding:150px max(32px,6vw);text-align:center;background:#071006;color:#fff}.contact h2{font-size:clamp(4rem,8vw,8rem)}.light{background:#fff;color:var(--forest)}
+@media(max-width:760px){.nav a{display:none}.hero{padding-inline:22px}.hero h1{font-size:clamp(3.4rem,16vw,5.5rem)}.services,.contact{padding-inline:22px}.cards{grid-template-columns:1fr 1fr}.cards article{min-height:150px}.contact{text-align:left}}
