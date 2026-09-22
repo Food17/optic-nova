@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Menu, X, Sparkles } from "lucide-react";
 
@@ -17,7 +17,7 @@ const process = [
 
 const ease = [0.22, 1, 0.36, 1];
 
-function Reveal({ children, className = "", delay = 0, y = 32 }: { children: React.ReactNode; className?: string; delay?: number; y?: number }) {
+function Reveal({ children, className = "", delay = 0, y = 32 }: { children: ReactNode; className?: string; delay?: number; y?: number }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
