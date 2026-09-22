@@ -14,3 +14,18 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.065em}h1{font-s
 .contact{min-height:90vh;position:relative;overflow:hidden;padding:130px max(28px,7vw) 35px;background:#071006;color:#fff;display:flex;flex-direction:column;justify-content:center}.contact-glow{position:absolute;width:55vw;height:55vw;right:-18vw;top:-20vw;border-radius:50%;background:radial-gradient(circle,#31f6002c,transparent 65%)}.contact h2{position:relative;font-size:clamp(4.5rem,10vw,10rem);line-height:.82;max-width:1100px;margin:55px 0 25px}.contact>p{position:relative;max-width:460px;color:#aeb9aa;line-height:1.75;font-size:14px}.contact-cta{position:relative;align-self:flex-start;margin-top:25px;background:var(--lime);color:#071006;padding:16px 21px}.contact-footer{position:absolute;bottom:35px;left:max(28px,7vw);right:max(28px,7vw);display:flex;justify-content:space-between;padding-top:18px;border-top:1px solid #ffffff20;font-size:9px;letter-spacing:.14em;color:#849080;text-transform:uppercase}
 @media(max-width:900px){.nav-links{margin-left:20px;gap:16px}.statement{grid-template-columns:1fr;padding-inline:7vw}.work-grid{grid-template-columns:1fr}.work-card-main{grid-row:auto}.process-list{grid-template-columns:1fr 1fr;row-gap:30px}.process-list article:nth-child(2){border-right:0}.process-list article{margin-right:20px}}
 @media(max-width:700px){.nav{width:calc(100% - 24px);top:12px}.nav-links{display:none;position:absolute;top:70px;left:0;right:0;margin:0;padding:22px;border-radius:24px;background:#fff;box-shadow:0 20px 50px #00000012;flex-direction:column;align-items:flex-start}.nav-links.is-open{display:flex}.nav-cta{display:none}.menu-toggle{display:grid;place-items:center}.hero{padding:150px 22px 105px}.hero h1{font-size:clamp(3.7rem,16vw,6rem)}.hero-meta{left:22px;right:22px;bottom:25px}.hero-meta span:last-child{display:none}.scroll-cue{display:none}.statement,.services,.work,.process,.contact{padding-left:22px;padding-right:22px}.statement{padding-top:100px;padding-bottom:100px}.services{padding-top:100px}.section-top p{display:none}.services-heading{margin:60px 0 45px}.services-heading svg{display:none}.service-row{grid-template-columns:40px 1fr 25px;gap:12px;padding:25px 0}.service-row p{grid-column:2 / 4;font-size:12px}.work{padding-top:100px}.work-heading,.process-intro{display:block;margin-bottom:55px}.work-heading p,.process-intro p{margin-top:25px}.work-art,.work-card-main .work-art{min-height:330px}.process{padding-top:100px}.process-list{grid-template-columns:1fr}.process-list article,.process-list article:nth-child(2){border-right:0;border-bottom:1px solid var(--line);padding-bottom:28px;margin-right:0}.process-list h3{margin-top:35px}.contact{min-height:760px;padding-top:100px}.contact h2{margin-top:45px}.contact-footer{left:22px;right:22px;bottom:25px}.contact-footer span:last-child{display:none}}
+
+
+/* Milestone 4 — motion, accessibility and cinematic polish */
+@keyframes floatOrb{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-18px,22px,0) scale(1.04)}}
+@keyframes gridDrift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(80px,80px,0)}}
+.orb-one{animation:floatOrb 12s ease-in-out infinite}
+.orb-two{animation:floatOrb 16s ease-in-out infinite reverse}
+.hero-grid{animation:gridDrift 22s linear infinite}
+.nav a,.cta,.text-link,.service-row,.work-card{will-change:transform}
+:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+button{cursor:pointer}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
