@@ -66,33 +66,56 @@ export default function App() {
 
       <header className="nav">
         <a className="brand" href="#" onClick={closeMenu} aria-label="Optic Nova home">
-          <span>OPTIC</span><i>NOVA</i>
+          <span className="brand-mark" aria-hidden="true"><i>O</i><b>N</b></span>
+          <span className="brand-wordmark"><strong>OPTIC</strong><i>NOVA</i></span>
         </a>
 
+        <nav className="nav-links" aria-label="Primary navigation">
+          <a href="#services" onClick={closeMenu}><span>01</span>Services</a>
+          <a href="#work" onClick={closeMenu}><span>02</span>Work</a>
+          <a href="#about" onClick={closeMenu}><span>03</span>About</a>
+          <a href="#process" onClick={closeMenu}><span>04</span>Process</a>
+          <a href="#faq" onClick={closeMenu}><span>05</span>FAQ</a>
+        </nav>
+
+        <div className="nav-actions">
+          <span className="nav-status"><i /> Available for select projects</span>
+          <a className="nav-cta" href="#contact">Start a Project <ArrowUpRight size={15} /></a>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            type="button"
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
         <AnimatePresence>
-          {(menuOpen || typeof window !== "undefined") && (
-            <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
-              <a href="#services" onClick={closeMenu}>Services</a>
-              <a href="#work" onClick={closeMenu}>Work</a>
-              <a href="#about" onClick={closeMenu}>About</a>
-              <a href="#process" onClick={closeMenu}>Process</a>
-              <a href="#faq" onClick={closeMenu}>FAQ</a>
-              <a href="#contact" onClick={closeMenu}>Contact</a>
-            </nav>
+          {menuOpen && (
+            <motion.nav
+              className="mobile-nav"
+              initial={{ opacity: 0, y: -12, scale: .98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: .98 }}
+              transition={{ duration: .35, ease }}
+              aria-label="Mobile navigation"
+            >
+              <div className="mobile-nav-head">
+                <span>Navigate</span><span>OPTIC / NOVA</span>
+              </div>
+              <div className="mobile-nav-links">
+                <a href="#services" onClick={closeMenu}><small>01</small><strong>Services</strong><ArrowUpRight size={18} /></a>
+                <a href="#work" onClick={closeMenu}><small>02</small><strong>Work</strong><ArrowUpRight size={18} /></a>
+                <a href="#about" onClick={closeMenu}><small>03</small><strong>About</strong><ArrowUpRight size={18} /></a>
+                <a href="#process" onClick={closeMenu}><small>04</small><strong>Process</strong><ArrowUpRight size={18} /></a>
+                <a href="#faq" onClick={closeMenu}><small>05</small><strong>FAQ</strong><ArrowUpRight size={18} /></a>
+                <a href="#contact" onClick={closeMenu}><small>06</small><strong>Start a project</strong><ArrowUpRight size={18} /></a>
+              </div>
+            </motion.nav>
           )}
         </AnimatePresence>
-
-        <a className="nav-cta" href="#contact">Start a Project <ArrowUpRight size={15} /></a>
-
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={menuOpen}
-          type="button"
-        >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
       </header>
 
       <section className="hero">
