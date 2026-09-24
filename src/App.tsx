@@ -16,6 +16,15 @@ const process = [
   ["04", "Deliver", "We polish, test and prepare the work for the real world—not just the presentation deck."]
 ];
 
+const faqs = [
+  ["What does Optic Nova actually build?", "We combine SaaS development, UI/UX, brand identity and graphic design. That means we can shape the product strategy, design the experience, build the digital product and create the brand system around it."],
+  ["Can you work with an existing brand?", "Yes. We can work within an established identity, evolve it into a stronger system, or create a new visual direction where the current brand no longer reflects the business."],
+  ["Do you only work with startups?", "No. We work with founders, growing companies and established teams that need a sharper digital product, stronger identity or a more cohesive visual experience."],
+  ["How does a project begin?", "Every engagement starts with a discovery conversation. We clarify the goal, audience, scope, timeline and technical requirements before recommending the right combination of strategy, design and engineering."],
+  ["Can you handle design and development together?", "Yes. Product design and engineering can move together from concept through launch, which reduces handoff friction and keeps the final experience aligned with the original creative direction."],
+  ["Do you offer ongoing support after launch?", "Yes. Depending on the project, we can continue with iterations, product improvements, brand assets, maintenance and new digital experiences after the initial launch."]
+];
+
 const ease = [0.22, 1, 0.36, 1];
 
 function Reveal({ children, className = "", delay = 0, y = 32, id }: { children: ReactNode; className?: string; delay?: number; y?: number; id?: string }) {
@@ -63,6 +72,7 @@ export default function App() {
           <a href="#work" onClick={closeMenu}>Work</a>
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#process" onClick={closeMenu}>Process</a>
+          <a href="#faq" onClick={closeMenu}>FAQ</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
 
@@ -208,6 +218,31 @@ export default function App() {
         </div>
       </section>
 
+      <section className="motion-showcase">
+        <div className="motion-copy">
+          <div className="section-label light-label">02 / Motion & atmosphere</div>
+          <h2>Digital work should <em>move.</em></h2>
+          <p>We use motion to give interfaces rhythm, hierarchy and personality—not decoration for decoration's sake.</p>
+          <div className="motion-tags">
+            <span>Micro-interactions</span><span>Scroll choreography</span><span>Product motion</span>
+          </div>
+        </div>
+        <motion.div className="motion-reel" initial={reduce ? false : { opacity: 0, scale: .94 }} whileInView={reduce ? undefined : { opacity: 1, scale: 1 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .9, ease }}>
+          <video
+            className="reel-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster=""
+            aria-label="Abstract green motion graphic"
+            src="https://videos.pexels.com/video-files/34867651/14775702_1920_1080_24fps.mp4"
+          />
+          <div className="reel-overlay"><span>OPTIC / MOTION STUDY</span><strong>01: DIGITAL ENERGY</strong><i /></div>
+        </motion.div>
+      </section>
+
       <section id="process" className="process">
         <div className="section-label">03 / Our process</div>
         <Reveal className="process-intro">
@@ -228,11 +263,27 @@ export default function App() {
         </div>
       </section>
 
+      <section id="faq" className="faq">
+        <div className="section-label">04 / Frequently asked</div>
+        <Reveal className="faq-heading">
+          <h2>Questions, <em>answered.</em></h2>
+          <p>A few useful answers before we start building together.</p>
+        </Reveal>
+        <div className="faq-list">
+          {faqs.map(([question, answer], index) => (
+            <details key={question} className="faq-item">
+              <summary><span>0{index + 1}</span><strong>{question}</strong><i>+</i></summary>
+              <div className="faq-answer"><p>{answer}</p></div>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section id="contact" className="contact">
         <div className="contact-glow" />
         <div className="contact-inner">
           <div className="contact-copy">
-            <div className="section-label light-label">04 / Let's create together</div>
+            <div className="section-label light-label">05 / Let's create together</div>
             <Reveal y={45}>
               <h2>Ready to build<br /><em>something great?</em></h2>
               <p>Tell us what you're working on. We'll bring the right mix of strategy, design and engineering to the table.</p>
