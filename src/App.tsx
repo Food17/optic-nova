@@ -18,7 +18,7 @@ const process = [
 
 const ease = [0.22, 1, 0.36, 1];
 
-function Reveal({ children, className = "", delay = 0, y = 32 }: { children: ReactNode; className?: string; delay?: number; y?: number }) {
+function Reveal({ children, className = "", delay = 0, y = 32, id }: { children: ReactNode; className?: string; delay?: number; y?: number; id?: string }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
