@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Menu, X, Sparkles, CheckCircle2 } from "lucide-react";
 
 const services = [
@@ -61,20 +61,26 @@ export default function App() {
   return (
     <main>
       <div className="grain" aria-hidden="true" />
+      <motion.div className="scroll-progress" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, ease }} />
+      <div className="cursor-glow" aria-hidden="true" />
 
       <header className="nav">
         <a className="brand" href="#" onClick={closeMenu} aria-label="Optic Nova home">
           <span>OPTIC</span><i>NOVA</i>
         </a>
 
-        <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
-          <a href="#services" onClick={closeMenu}>Services</a>
-          <a href="#work" onClick={closeMenu}>Work</a>
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#process" onClick={closeMenu}>Process</a>
-          <a href="#faq" onClick={closeMenu}>FAQ</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
-        </nav>
+        <AnimatePresence>
+          {(menuOpen || typeof window !== "undefined") && (
+            <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Primary navigation">
+              <a href="#services" onClick={closeMenu}>Services</a>
+              <a href="#work" onClick={closeMenu}>Work</a>
+              <a href="#about" onClick={closeMenu}>About</a>
+              <a href="#process" onClick={closeMenu}>Process</a>
+              <a href="#faq" onClick={closeMenu}>FAQ</a>
+              <a href="#contact" onClick={closeMenu}>Contact</a>
+            </nav>
+          )}
+        </AnimatePresence>
 
         <a className="nav-cta" href="#contact">Start a Project <ArrowUpRight size={15} /></a>
 
@@ -279,11 +285,29 @@ export default function App() {
         </div>
       </section>
 
+      <section className="image-story">
+        <div className="image-story-media">
+          <img
+            src="https://images.pexels.com/photos/16771153/pexels-photo-16771153.jpeg?auto=compress&cs=tinysrgb&w=1800"
+            alt="Creative professional working on a laptop in a modern studio"
+            loading="lazy"
+            onError={(event) => { event.currentTarget.style.display = "none"; }}
+          />
+          <div className="image-fallback" aria-hidden="true" />
+          <div className="image-story-overlay"><span>OPTIC NOVA / STUDIO</span><strong>Ideas need a<br/><em>place to move.</em></strong></div>
+        </div>
+        <div className="image-story-copy">
+          <div className="section-label">05 / The visual language</div>
+          <h2>Human thinking.<br/><em>Digital expression.</em></h2>
+          <p>Our visual direction balances expressive typography, tactile imagery, sharp interfaces and motion. The result should feel designed—not assembled.</p>
+        </div>
+      </section>
+
       <section id="contact" className="contact">
         <div className="contact-glow" />
         <div className="contact-inner">
           <div className="contact-copy">
-            <div className="section-label light-label">05 / Let's create together</div>
+            <div className="section-label light-label">06 / Let's create together</div>
             <Reveal y={45}>
               <h2>Ready to build<br /><em>something great?</em></h2>
               <p>Tell us what you're working on. We'll bring the right mix of strategy, design and engineering to the table.</p>
