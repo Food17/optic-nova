@@ -300,3 +300,70 @@ button{cursor:pointer}
 @media(max-width:430px){
   .hero::after{right:-28vw;width:115vw;height:43vh;bottom:2vh;opacity:.3}
 }
+
+
+
+/* Premium motion layer */
+:root{--accent-soft:#b7ffb1;--cream:#f5f7f1}
+::selection{background:var(--lime);color:#061006}
+
+.motion-showcase{
+  position:relative;display:grid;grid-template-columns:.78fr 1.22fr;gap:70px;align-items:center;
+  padding:125px max(28px,7vw);background:#050b06;color:#fff;overflow:hidden;border-top:1px solid #ffffff12
+}
+.motion-showcase:before{content:"";position:absolute;inset:-35%;background:radial-gradient(circle at 70% 50%,#31f60016,transparent 38%);animation:slowPulse 9s ease-in-out infinite}
+.motion-copy,.motion-reel{position:relative;z-index:2}
+.motion-copy h2{font-size:clamp(3.8rem,7vw,7rem);line-height:.84;margin:32px 0 24px;max-width:720px}
+.motion-copy p{max-width:470px;color:#aab8a8;font-size:14px;line-height:1.8}
+.motion-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.motion-tags span{padding:9px 12px;border:1px solid #ffffff1b;border-radius:999px;color:#b9c6b7;font-size:9px;text-transform:uppercase;letter-spacing:.08em;background:#ffffff04}
+.motion-reel{aspect-ratio:16/9;border:1px solid #ffffff1c;border-radius:10px;overflow:hidden;background:#081208;box-shadow:0 35px 100px #00000065}
+.reel-video{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.8) contrast(1.1) brightness(.62)}
+.reel-overlay{position:absolute;inset:0;padding:22px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#02070290 0%,transparent 42%,#020702a8 100%);pointer-events:none}
+.reel-overlay span{font:9px "Space Grotesk";letter-spacing:.16em;color:#b9f5b4}
+.reel-overlay strong{font:500 clamp(1.7rem,3.2vw,3.4rem) "Space Grotesk";letter-spacing:-.05em}
+.reel-overlay i{position:absolute;right:22px;bottom:22px;width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 7px #31f60020;animation:reelPulse 2s ease-in-out infinite}
+
+.faq{padding:125px max(28px,11vw);background:#f5f7f1;color:#081008;border-top:1px solid #dce4d9}
+.faq .section-label{color:var(--forest)}
+.faq-heading{display:flex;justify-content:space-between;align-items:end;gap:50px;margin:28px 0 65px}
+.faq-heading h2{font-size:clamp(4rem,7vw,7rem);line-height:.84;margin:0}
+.faq-heading p{max-width:350px;color:#667166;font-size:13px;line-height:1.7;margin:0}
+.faq-list{border-top:1px solid #cfd8cc}
+.faq-item{border-bottom:1px solid #cfd8cc}
+.faq-item summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:60px 1fr 40px;align-items:center;gap:20px;padding:27px 0}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary span{font:11px "Space Grotesk";color:var(--forest)}
+.faq-item summary strong{font:500 clamp(1.2rem,2.2vw,2rem) "Space Grotesk";letter-spacing:-.035em}
+.faq-item summary i{font-style:normal;font-size:26px;font-weight:300;text-align:right;transition:transform .35s ease}
+.faq-item[open] summary i{transform:rotate(45deg);color:var(--forest)}
+.faq-answer{max-width:720px;margin:0 60px 28px 80px;color:#667166;font-size:13px;line-height:1.8}
+.faq-answer p{margin:0}
+
+@keyframes slowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+@keyframes reelPulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.35);opacity:1}}
+
+@media(max-width:900px){
+  .motion-showcase{grid-template-columns:1fr;gap:45px}
+  .motion-copy h2{font-size:clamp(3.8rem,9vw,6rem)}
+  .faq{padding-left:7vw;padding-right:7vw}
+}
+@media(max-width:760px){
+  .motion-showcase{padding:95px 22px}
+  .motion-copy h2{font-size:clamp(3.5rem,14vw,5.8rem)}
+  .motion-reel{border-radius:7px}
+  .reel-overlay{padding:15px}
+  .reel-overlay strong{font-size:1.5rem}
+  .faq{padding:95px 22px}
+  .faq-heading{display:block;margin-bottom:45px}
+  .faq-heading h2{font-size:clamp(3.5rem,14vw,5.8rem)}
+  .faq-heading p{margin-top:20px}
+  .faq-item summary{grid-template-columns:34px 1fr 30px;gap:10px;padding:22px 0}
+  .faq-item summary strong{font-size:1.05rem;line-height:1.2}
+  .faq-answer{margin:0 40px 23px 44px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-showcase:before,.reel-overlay i{animation:none}
+  .reel-video{display:none}
+  .motion-reel{background:radial-gradient(circle at 60% 40%,#31f60030,transparent 55%),#071007}
+}
